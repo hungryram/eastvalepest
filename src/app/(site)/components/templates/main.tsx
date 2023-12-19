@@ -444,6 +444,7 @@ export default function Main({
                                     disclosureBackgroundColor={section?.disclosureBackgroundColor}
                                     disclosureTextColor={section?.disclosureTextColor}
                                     disclosureContentColor={section?.disclosureContentColor}
+                                    isFaq={section?.isFaq}
                                     content={section?.content}
                                     textAlign={section?.textAlign}
                                     {...settingsSchema}
@@ -453,6 +454,7 @@ export default function Main({
                                 <DisclosureSection
                                     key={section?._key}
                                     disclosure={section?.disclosures}
+                                    isFaq={section?.isFaq}
                                     disclosureBackgroundColor={section?.disclosureBackgroundColor}
                                     disclosureTextColor={section?.disclosureTextColor}
                                     disclosureContentColor={section?.disclosureContentColor}
@@ -465,6 +467,7 @@ export default function Main({
                                 <DisclosureSeparate
                                     key={section?._key}
                                     disclosure={section?.disclosures}
+                                    isFaq={section?.isFaq}
                                     disclosureBackgroundColor={section?.disclosureBackgroundColor}
                                     disclosureTextColor={section?.disclosureTextColor}
                                     disclosureContentColor={section?.disclosureContentColor}
@@ -577,6 +580,8 @@ export default function Main({
                                 <LeadFormTwoColumn
                                     key={section?._key}
                                     formSchema={section?.formBuilder}
+                                    formBackground={section?.formBackground?.hex}
+                                    formTextColor={section?.formTextColor?.hex}
                                     content={section?.content}
                                     textAlign={section?.textAlign}
                                     {...settingsSchema}

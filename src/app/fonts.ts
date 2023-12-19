@@ -1,8 +1,9 @@
-import { Inter } from 'next/font/google';
+import { Poppins } from 'next/font/google';
  
-export const interFont = Inter({
+export const bodyFont = Poppins({
   subsets: ['latin'],
   display: 'swap',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
   variable: '--body-font'
 });
  

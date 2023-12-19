@@ -291,7 +291,7 @@ const homeOtherDocumentSections = groq`
     }
   },
 },
-'allBlog': *[_type == 'blog'][0...2] {
+'allBlog': *[_type == 'blog'][0...4] | order(date desc) {
   _id,
   title,
   slug,

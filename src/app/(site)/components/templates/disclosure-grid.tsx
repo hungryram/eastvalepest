@@ -20,6 +20,7 @@ interface Props {
     secondaryButtonStyle: any;
     paddingTop: string;
     paddingBottom: string;
+    isFaq: boolean;
 }
 
 interface Block {
@@ -47,6 +48,7 @@ export default function DisclosureGrid({
     secondaryButtonStyle,
     paddingTop,
     paddingBottom,
+    isFaq
 }: Props) {
 
     function toPlainText(blocks: Block[] = []): string {
@@ -79,16 +81,18 @@ export default function DisclosureGrid({
     const styles = {
         paddingTop: paddingTop ?? '5rem',
         paddingBottom: paddingBottom ?? '5rem',
-      }
-    
-      const allStyles = { ...backgroundStyles, ...styles }
+    }
+
+    const allStyles = { ...backgroundStyles, ...styles }
 
     return (
         <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
-            />
+            {isFaq && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+                />
+            )}
             <div style={allStyles}>
                 <div className="container">
                     <div className="lg:grid lg:grid-cols-12 lg:gap-8">

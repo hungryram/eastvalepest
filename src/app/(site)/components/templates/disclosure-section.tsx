@@ -20,6 +20,7 @@ interface Props {
     secondaryButtonStyle: any;
     paddingTop: string;
     paddingBottom: string;
+    isFaq: boolean;
 }
 
 interface Block {
@@ -47,6 +48,8 @@ export default function DisclosureSection({
     secondaryButtonStyle,
     paddingTop,
     paddingBottom,
+    isFaq
+
 }: Props) {
 
     function toPlainText(blocks: Block[] = []): string {
@@ -85,10 +88,12 @@ export default function DisclosureSection({
 
     return (
         <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
-            />
+            {isFaq && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+                />
+            )}
             <div style={allStyles}>
                 <div className="container">
                     {(content || primaryButtonLink || secondaryButtonLink) && (

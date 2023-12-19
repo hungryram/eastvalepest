@@ -3,7 +3,7 @@
 }
 
 .featureGridWrap {
-    @apply mx-auto
+    @apply mx-auto relative z-10
 }
 
 .featureCard {

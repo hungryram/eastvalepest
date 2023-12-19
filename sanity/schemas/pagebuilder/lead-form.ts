@@ -37,6 +37,16 @@ export default defineType({
         list: textAlign
       },
     },
+    {
+      title: 'Form Background Color',
+      name: 'formBackground',
+      type: 'color'
+    },
+    {
+      title: 'Form Text Color',
+      name: 'formTextColor',
+      type: 'color'
+    },
     primaryButton,
     secondaryButton,
     colorOptions,

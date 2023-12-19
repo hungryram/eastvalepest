@@ -14,6 +14,8 @@ interface Props {
     formSchema: any;
     paddingTop: string;
     paddingBottom: string;
+    formBackground: string;
+    formTextColor: string;
 }
 
 export default function LeadFormTwoColumn({
@@ -29,6 +31,8 @@ export default function LeadFormTwoColumn({
     formSchema,
     paddingTop,
     paddingBottom,
+    formBackground,
+    formTextColor
 }: Props) {
 
     const styles = {
@@ -41,26 +45,31 @@ export default function LeadFormTwoColumn({
     return (
         <div style={allStyles}>
             <div className="container">
-                <div className="grid md:grid-cols-2 grid-cols-1 gap-10">
-                        {(content || primaryButtonLink || secondaryButtonLink) && (
-                            <HeaderSection
-                                content={content}
-                                textAlign={textAlign}
-                                // PRIMARY
-                                buttonLink={primaryButtonLink}
-                                primaryButtonText={primaryButtonText}
-                                primaryButtonStyle={primaryButtonStyle}
-                                // SECONDARY
-                                secondaryButtonLink={secondaryButtonLink}
-                                secondaryButtonText={secondaryButtonText}
-                                secondaryButtonStyle={secondaryButtonStyle}
-                            />
-                        )}
-                        <div className={`${content && 'mt-16'}`}>
+                <div className="grid md:grid-cols-2 grid-cols-1 md:gap-32 gap-10 items-center">
+                    {(content || primaryButtonLink || secondaryButtonLink) && (
+                        <HeaderSection
+                            content={content}
+                            textAlign={textAlign}
+                            // PRIMARY
+                            buttonLink={primaryButtonLink}
+                            primaryButtonText={primaryButtonText}
+                            primaryButtonStyle={primaryButtonStyle}
+                            // SECONDARY
+                            secondaryButtonLink={secondaryButtonLink}
+                            secondaryButtonText={secondaryButtonText}
+                            secondaryButtonStyle={secondaryButtonStyle}
+                        />
+                    )}
+                    <div>
+                        <div className="py-10 md:px-12 px-4" style={{
+                            backgroundColor: formBackground ? formBackground : 'transparent',
+                            color: formTextColor ? formTextColor : '#000'
+                        }}>
                             <FormBuilder
                                 formSchema={formSchema}
                             />
                         </div>
+                    </div>
                 </div>
             </div>
         </div>

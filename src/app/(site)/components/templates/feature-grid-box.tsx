@@ -48,7 +48,7 @@ export default function FeaturedGridBox({
     const allStyles = { ...backgroundStyles, ...styles }
 
     return (
-        <div className={`${offsetTop && '-mt-32 relative'}`} style={allStyles}>
+        <div className={`${offsetTop && '-mt-48'}`} style={allStyles}>
             <div className={`container`}>
                 {(content || primaryButtonLink || secondaryButtonLink) && (
                     <HeaderSection
@@ -65,7 +65,7 @@ export default function FeaturedGridBox({
                     />
                 )}
                 <div className={Styles.featureGridWrap}>
-                    <dl className={`grid rounded-sm grid-cols-1 lg:grid-cols-${columnNumber} ${content && 'mt-16'}`} style={{
+                    <dl className={`grid rounded-sm grid-cols-1 divide-x-2 shadow-lg lg:grid-cols-${columnNumber} ${content && 'mt-16'}`} style={{
                         backgroundColor: gridBackgroundColor
                     }}>
                         {blocks?.map((node: any) => {

@@ -13,6 +13,7 @@ interface FormField {
   checkBoxValue: string[]
   required: boolean
   stacked: boolean
+  hideLabel: boolean
 }
 
 interface FormSchema {
@@ -50,14 +51,19 @@ export default function FormBuilder({ formSchema }: FormBuilderProps) {
             {formSchema.fields.map((field, i) => {
               return (
                 <div key={field._key} className="mb-6">
-                  <label htmlFor={field.label.replace(/ /g, '') + i} className={Styles.formLabel}>
-                    {field.label}
-                    {field.required && <span>*</span>}
-                  </label>
+                  {field?.hideLabel ?
+                    <></>
+                    :
+                    <label htmlFor={field.label.replace(/ /g, '') + i} className={`${Styles.formLabel}`}>
+                      {field.label}
+                      {field.required && <span>*</span>}
+                    </label>
+                  }
                   {field.type === 'text' && (
                     <input
                       type="text"
                       name={field.label}
+                      placeholder={`${field.label} ${field.required && '*'}`}
                       className={Styles.formDefaultInput}
                       id={field.label.replace(/ /g, '') + i}
                       required={field.required ? true : undefined}
@@ -67,6 +73,7 @@ export default function FormBuilder({ formSchema }: FormBuilderProps) {
                     <input
                       type="file"
                       name={field.label}
+                      placeholder={`${field.label} ${field.required && '*'}`}
                       className={Styles.formDefaultInput}
                       id={field.label.replace(/ /g, '') + i}
                       required={field.required ? true : undefined}
@@ -75,6 +82,7 @@ export default function FormBuilder({ formSchema }: FormBuilderProps) {
                   {field.type === 'email' && (
                     <input
                       type="email"
+                      placeholder={`${field.label} ${field.required && '*'}`}
                       name={field.label}
                       className={Styles.formDefaultInput}
                       id={field.label.replace(/ /g, '') + i}
@@ -85,6 +93,7 @@ export default function FormBuilder({ formSchema }: FormBuilderProps) {
                     <input
                       type="tel"
                       name={field.label}
+                      placeholder={`${field.label} ${field.required ? '*' : ''}`}
                       className={Styles.formDefaultInput}
                       id={field.label.replace(/ /g, '') + i}
                       required={field.required ? true : undefined}
@@ -101,6 +110,7 @@ export default function FormBuilder({ formSchema }: FormBuilderProps) {
                               id={node.replace(/^[^A-Za-z0-9]+/g, '').replace(/[^A-Za-z0-9_\-:.]/g, '') + i}
                               className="h-4 w-4 rounded border-gray-300"
                               required={field.required ? true : undefined}
+                              value={node}
                             />
                             <label htmlFor={node.replace(/^[^A-Za-z0-9]+/g, '').replace(/[^A-Za-z0-9_\-:.]/g, '') + i} className={Styles.formInputList}>
                               {node}
@@ -119,7 +129,7 @@ export default function FormBuilder({ formSchema }: FormBuilderProps) {
                               type="checkbox"
                               name={field.label}
                               id={node.replace(/^[^A-Za-z0-9]+/g, '').replace(/[^A-Za-z0-9_\-:.]/g, '') + i}
-                              className="h-4 w-4 rounded border-gray-300"
+                              className="h-4 w-4 rounded-full border-gray-300"
                               value={node}
                               required={field.required ? true : undefined}
                             />
@@ -136,9 +146,10 @@ export default function FormBuilder({ formSchema }: FormBuilderProps) {
                       <select
                         id={field.label.replace(/ /g, '') + i}
                         name={field.label}
-                        className="block w-full rounded-md border py-1.5 text-gray-900 shadow-sm sm:max-w-xs sm:text-sm sm:leading-6 bg-gray-100"
+                        className="block w-full rounded-full border py-3 text-black bg-transparent border-[#121924]"
                         required={field.required ? true : undefined}
                       >
+                        <option disabled selected>{field.label} {field.required && '*'}</option>
                         {field?.selectValue?.map((node, i) => {
                           return (
                             <option value={node} key={i}>
@@ -152,7 +163,8 @@ export default function FormBuilder({ formSchema }: FormBuilderProps) {
                   {field.type === 'textarea' && (
                     <textarea
                       name={field.label}
-                      className={Styles.formDefaultInput}
+                      className={Styles.formDefaultTextarea}
+                      placeholder={`${field.label} ${field.required && '*'}`}
                       rows={3}
                       id={field.label.replace(/ /g, '') + i}
                       required={field.required ? true : undefined}
@@ -163,19 +175,21 @@ export default function FormBuilder({ formSchema }: FormBuilderProps) {
             })}
           </>
         )}
-        {formSchema?.formDisclaimer &&
-          <div className="mb-6 text-xs">
-            <ContentEditor 
-              content={formSchema?.formDisclaimer}
-            />
-          </div>
-        }
-        <button type="submit" className="primary-button" style={{
-          backgroundColor: formSchema?.buttonBackgroundColor?.hex,
-          color: formSchema?.buttonTextColor?.hex
-        }}>
-          {formSchema?.buttonLabel ?? 'Submit'}
-        </button>
+        <div className="text-center">
+          {formSchema?.formDisclaimer &&
+            <div className="mb-6 text-sm !text-[#121924]">
+              <ContentEditor
+                content={formSchema?.formDisclaimer}
+              />
+            </div>
+          }
+          <button type="submit" className="primary-button w-full" style={{
+            backgroundColor: formSchema?.buttonBackgroundColor?.hex,
+            color: formSchema?.buttonTextColor?.hex
+          }}>
+            {formSchema?.buttonLabel ?? 'Submit'}
+          </button>
+        </div>
       </form>
     </div>
   );

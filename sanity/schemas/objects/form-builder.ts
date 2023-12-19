@@ -74,6 +74,11 @@ export default defineType({
                             validation: (Rule) => Rule.required().error('Name your input field'),
                         },
                         {
+                            title: 'Hide Label',
+                            name: 'hideLabel',
+                            type: 'boolean'
+                        },
+                        {
                             title: 'Type',
                             name: 'type',
                             type: 'string',

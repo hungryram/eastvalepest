@@ -23,6 +23,11 @@ export default defineType({
             },
         },
         {
+            title: 'Is FAQ',
+            name: 'isFaq',
+            type: 'boolean'
+        },
+        {
             title: 'Content',
             name: 'content',
             group: 'content',
