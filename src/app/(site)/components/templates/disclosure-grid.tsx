@@ -79,8 +79,8 @@ export default function DisclosureGrid({
     };
 
     const styles = {
-        paddingTop: paddingTop ?? '5rem',
-        paddingBottom: paddingBottom ?? '5rem',
+        paddingTop: paddingTop ?? '2rem',
+        paddingBottom: paddingBottom ?? '2rem',
     }
 
     const allStyles = { ...backgroundStyles, ...styles }

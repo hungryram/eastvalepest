@@ -700,6 +700,8 @@ export async function getServices(slug: string) {
       'imageData': featuredImage {
         asset->{
           url,
+          altText,
+          lqip
         }
       },
       seo {

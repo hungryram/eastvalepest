@@ -1,6 +1,6 @@
 'use client'
 import { Disclosure } from '@headlessui/react'
-import { FiChevronUp } from 'react-icons/fi'
+import { FaCaretUp } from 'react-icons/fa'
 import ContentEditor from '../util/content-editor'
 import HeaderSection from './header-section'
 
@@ -49,7 +49,6 @@ export default function DisclosureSection({
     paddingTop,
     paddingBottom,
     isFaq
-
 }: Props) {
 
     function toPlainText(blocks: Block[] = []): string {
@@ -80,8 +79,8 @@ export default function DisclosureSection({
       };
 
       const styles = {
-        paddingTop: paddingTop ?? '5rem',
-        paddingBottom: paddingBottom ?? '5rem',
+        paddingTop: paddingTop ?? '2rem',
+        paddingBottom: paddingBottom ?? '2rem',
       }
     
       const allStyles = { ...backgroundStyles, ...styles }
@@ -114,16 +113,16 @@ export default function DisclosureSection({
                         {disclosure?.map((node: any) => {
                             return (
                                 <div className={`w-full`} key={node._key}>
-                                    <div className="mx-auto w-full md:max-w-2xl rounded-2xl p-2">
+                                    <div className="mx-auto w-full rounded-2xl my-2">
                                         <Disclosure>
                                             {({ open }) => (
                                                 <>
-                                                    <Disclosure.Button className="flex w-full justify-between rounded-md px-4 py-2 text-left" style={{
+                                                    <Disclosure.Button className="flex w-full justify-between px-4 py-4 text-left font-semibold" style={{
                                                         background: `${disclosureBackgroundColor?.hex ?? 'var(--primary-button-background)'}`,
                                                         color: `${disclosureTextColor?.hex ?? 'var(--primary-button-text)'}`
                                                     }}>
                                                         {node?.heading && <span>{node.heading}</span>}
-                                                        <FiChevronUp
+                                                        <FaCaretUp
                                                             className={`${open ? 'rotate-180 transform' : ''
                                                                 } h-5 w-5`}
                                                             style={{
@@ -131,7 +130,7 @@ export default function DisclosureSection({
                                                             }}
                                                         />
                                                     </Disclosure.Button>
-                                                    <Disclosure.Panel className="px-4 pt-4 pb-2" style={{
+                                                    <Disclosure.Panel className="px-4 pt-4 pb-2 content" style={{
                                                         color: `${disclosureContentColor?.hex ?? '#000000'}`
                                                     }}>
                                                         {node.content &&
