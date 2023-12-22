@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Fragment, useEffect, useState } from 'react'
 import Styles from "./navbar.module.css"
+import { FaCaretRight } from "react-icons/fa6";
 
 export interface NavbarProps {
   company_name: string
@@ -197,8 +198,8 @@ export default function Navbar({
           </div>
           {!hideCta && ctaLinking &&
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-              <Link href={ctaLinking ?? '/'} className="primary-button">
-                {ctaLink?.text} <span aria-hidden="true">&rarr;</span>
+              <Link href={ctaLinking ?? '/'} className="primary-button text-sm flex items-center">
+                {ctaLink?.text} <FaCaretRight className="text-xl"/>
               </Link>
             </div>
           }

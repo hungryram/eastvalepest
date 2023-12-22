@@ -80,8 +80,11 @@ export default function FeaturedGridBox({
                                 (blockLink?._type === "team" && `/team/${node.blockLinking?.internalLink.slug}`) ||
                                 (blockLink?._type === "team" && `/team/${node.blockLinking?.internalLink.slug}`) ||
                                 (node.blockLinking?.externalUrl && `${node.blockLinking?.externalUrl}`);
+
                             return (
-                                <div key={node._key} className={`${Styles.featureCardContainer} p-10`}>
+                                <div key={node._key} className={`${Styles.featureCardContainer} p-10`} style={{
+                                    backgroundColor: node?.gridColor?.hex
+                                }}>
                                     <dt className={`${Styles.featureCard}`} style={{
                                         color: node?.headingColor?.hex
                                     }}>

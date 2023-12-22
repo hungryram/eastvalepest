@@ -110,6 +110,11 @@ export default defineType({
                             type: 'color',
                         },
                         {
+                            title: 'Grid Color',
+                            name: 'gridColor',
+                            type: 'color',
+                        },
+                        {
                             title: 'Content Color',
                             name: 'contentColor',
                             type: 'color',
