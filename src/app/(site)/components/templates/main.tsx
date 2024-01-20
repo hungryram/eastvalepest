@@ -274,6 +274,7 @@ export default function Main({
                                     key={section?._key}
                                     image={section?.imageData?.asset?.url}
                                     content={section?.content}
+                                    columnLayout={section?.columnLayout}
                                     reverseColumn={section?.reverseColumn}
                                     altText={section?.imageData?.asset?.altText}
                                     blurData={section?.imageData?.asset?.lqip}

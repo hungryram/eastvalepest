@@ -25,6 +25,20 @@ export default defineType({
             initialValue: "banner"
         },
         {
+            title: "Column Layout",
+            name: "columnLayout",
+            type: "string",
+            hidden: ({ parent }) => parent?.layoutType !== "textAndImage",
+            options: {
+                list: [
+                    { title: "1/2 Columns", value: "half" },
+                    { title: "2/5 and 3/5", value: "twoFifths" },
+                    { title: "1/3 and 2/3", value: "oneThird" },
+                ],
+            },
+            initialValue: "half"
+        },
+        {
             title: 'Text',
             name: 'content',
             type: 'contentEditor',
