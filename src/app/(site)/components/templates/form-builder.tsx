@@ -164,7 +164,7 @@ export default function FormBuilder({ formSchema }: FormBuilderProps) {
                     <textarea
                       name={field.label}
                       className={Styles.formDefaultTextarea}
-                      placeholder={`${field.label} ${field.required && '*'}`}
+                      placeholder={`${field.label}`}
                       rows={3}
                       id={field.label.replace(/ /g, '') + i}
                       required={field.required ? true : undefined}

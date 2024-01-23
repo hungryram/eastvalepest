@@ -94,23 +94,7 @@ export default async function servicesSlug({ params }: Props) {
                 title={services?.services?.title}
             />
             <div className="container mt-10">
-                <div className="md:flex space-x-10">
-                    <div className="md:w-2/5">
-                    <div className=" bg-slate-100" style={{ borderTop: '4px solid #112531' }}>
-                        <div className="p-10">
-                            <h3 className="font-bold text-xl mb-8">More Services</h3>
-                        <ul>
-                            {services?.allServices.map((node: any) => {
-                                return (
-                                    <>
-                                        <li className="bg-white my-2"><Link href={"/services/" + node.slug.current} className="flex items-center px-4 py-4 hover:bg-blue-400 hover:text-white transition-all ease-linear font-bold"> <FaArrowAltCircleRight className="inline-block mr-4 text-xl text-[#112531]" />{node.title}</Link></li>
-                                    </>
-                                )
-                            })}
-                        </ul>
-                        </div>
-                    </div>
-                    </div>
+                <div className="md:flex md:flex-row-reverse gap-x-10">
                     <div className="md:w-3/5">
                         <Main
                             pageBuilder={services?.services?.pageBuilder}
@@ -138,6 +122,22 @@ export default async function servicesSlug({ params }: Props) {
                             tiktok={services?.profileSettings?.social?.tiktok}
                             zillow={services?.profileSettings?.social?.zillow}
                         />
+                    </div>
+                    <div className="md:w-2/5">
+                    <div className=" bg-slate-100" style={{ borderTop: '4px solid #112531' }}>
+                        <div className="p-10">
+                            <h3 className="font-bold text-xl mb-8">More Services</h3>
+                        <ul>
+                            {services?.allServices.map((node: any) => {
+                                return (
+                                    <>
+                                        <li className="bg-white my-2"><Link href={"/services/" + node.slug.current} className="flex items-center px-4 py-4 hover:bg-blue-400 hover:text-white transition-all ease-linear font-bold"> <FaArrowAltCircleRight className="inline-block mr-4 text-xl text-[#112531]" />{node.title}</Link></li>
+                                    </>
+                                )
+                            })}
+                        </ul>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>

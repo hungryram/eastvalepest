@@ -1,4 +1,5 @@
 import ContentEditor from "../util/content-editor"
+import HeaderSection from "./header-section";
 
 interface Props {
     content: any,
@@ -7,6 +8,13 @@ interface Props {
     backgroundStyles: any,
     paddingTop?: string,
     paddingBottom?: string
+    primaryButtonLink: string;
+    primaryButtonText: string;
+    primaryButtonStyle: any;
+    secondaryButtonText: string;
+    secondaryButtonLink: string;
+    secondaryButtonStyle: any;
+    textAlign: string;
 }
 
 export default function ContentSimple({
@@ -16,6 +24,13 @@ export default function ContentSimple({
     backgroundStyles,
     paddingTop,
     paddingBottom,
+    primaryButtonLink,
+    primaryButtonText,
+    primaryButtonStyle,
+    secondaryButtonText,
+    secondaryButtonLink,
+    secondaryButtonStyle,
+    textAlign
 }: Props) {
 
     const styles = {
@@ -23,7 +38,7 @@ export default function ContentSimple({
         paddingBottom: paddingBottom ?? '5rem',
     }
 
-    const allStyles = {...backgroundStyles, ...styles}
+    const allStyles = { ...backgroundStyles, ...styles }
 
     return (
         <div className="content" style={allStyles}>
@@ -36,9 +51,21 @@ export default function ContentSimple({
                 ${layoutType === 'narrowContainer' && 'max-w-3xl'}
                 ${layoutType === 'twoColumn' && 'md:columns-2'}
             `}>
-                    <ContentEditor
-                        content={content}
-                    />
+                    {(content || primaryButtonLink || secondaryButtonLink) && (
+                        <HeaderSection
+                            content={content}
+                            textAlign={textAlign}
+                            // PRIMARY
+                            buttonLink={primaryButtonLink}
+                            primaryButtonText={primaryButtonText}
+                            primaryButtonStyle={primaryButtonStyle}
+                            // SECONDARY
+                            secondaryButtonLink={secondaryButtonLink}
+                            secondaryButtonText={secondaryButtonText}
+                            secondaryButtonStyle={secondaryButtonStyle}
+                        />
+                    )}
+
                 </div>
             </div>
         </div>
