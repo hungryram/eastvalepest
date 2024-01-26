@@ -682,7 +682,7 @@ export async function getPage(slug: string) {
       }
     }
     `,
-    { slug }
+    { slug },
   )
 }
 

@@ -1,8 +1,11 @@
+import { groq } from "next-sanity";
 import { notFound } from "next/navigation";
 import { getPage } from "../../../../lib/groq-data";
 import Main from "../components/templates/main";
 import { Metadata } from 'next';
-export const revalidate = 0;
+import { client } from "../../../../sanity/lib/client";
+// export const revalidate = 0;
+
 
 type Props = {
     params: {
@@ -57,6 +60,18 @@ export async function generateMetadata({ params }: Meta): Promise<Metadata> {
             follow: page?.pages?.seo?.noIndex ? false : true,
         }
     }
+}
+
+export async function generateStaticParams() {
+    const data = await client.fetch(
+        groq`
+        *[_type == "pages" && defined(slug.current)][].slug.current
+            `
+    )
+
+    return data.map((post) => ({
+        slug: post.slug,
+      }))
 }
 
 // GENERATES PAGE DATA

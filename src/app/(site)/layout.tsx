@@ -132,6 +132,7 @@ export default async function RootLayout({
         {data?.profileSettings?.settings?.googleID &&
           <GoogleAnalytics GA_TRACKING_ID={data?.profileSettings?.settings?.googleID} />
         }
+
         {data?.profileSettings?.settings?.facebookPixel &&
           <Pixel
             facebookPixel={data?.profileSettings?.settings?.facebookPixel}
