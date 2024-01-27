@@ -2,7 +2,7 @@
     background-color: var(--footer-background-color);
 }
 
-.footer h3 {
+.footer h2 {
     color: var(--footer-header-color);
     @apply text-sm font-semibold leading-6 lg:mb-6 mb-4
 }

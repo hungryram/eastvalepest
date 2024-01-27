@@ -94,7 +94,7 @@ export default function Footer({
                     />
                   </div>
                   :
-                  <h3 className="uppercase font-semibold mb-4">{company_name}</h3>
+                  <h2 className="uppercase font-semibold mb-4">{company_name}</h2>
                 }
                 {shortText &&
                   <p className="text-sm leading-6">
@@ -119,7 +119,7 @@ export default function Footer({
               </div>
               <div className=" flex-1">
                 <div>
-                  <h3>Contact Information</h3>
+                  <h2>Contact Information</h2>
                   <dl className="space-y-4 text-base leading-7">
                     {address || city || state || zip_code ? (
                       <div className={Styles.contactInfo}>
@@ -185,7 +185,7 @@ export default function Footer({
               {links &&
                 <div className=" flex-1">
                   <div>
-                    {quickLinksHeading && <h3>{quickLinksHeading}</h3>}
+                    {quickLinksHeading && <h2>{quickLinksHeading}</h2>}
                     <ul role="list" className="space-y-4">
                       {links?.map((link: any) => {
 
@@ -219,7 +219,7 @@ export default function Footer({
               }
               {secondLinks &&
                 <div className=" flex-1">
-                  {quickLinksTwoHeading && <h3>{quickLinksTwoHeading}</h3>}
+                  {quickLinksTwoHeading && <h2>{quickLinksTwoHeading}</h2>}
                   <ul role="list" className="space-y-4">
                     {secondLinks?.map((link: any) => {
 
@@ -272,7 +272,7 @@ export default function Footer({
                   />
                 </div>
                 :
-                <h3 className="uppercase font-semibold mb-4">{company_name}</h3>
+                <h2 className="uppercase font-semibold mb-4">{company_name}</h2>
               }
               <div className="mt-6 flex justify-center flex-col">
                 <nav className="columns-2 sm:flex sm:justify-center sm:space-x-12">
