@@ -126,6 +126,7 @@ export default async function RootLayout({
     enableTransparent: data?.appearances?.header?.enableTransparent,
   }
 
+
   return (
     <html lang="en">
       <body className={bodyFont.variable}>
@@ -204,7 +205,7 @@ export default async function RootLayout({
             image={data.appearances?.footer?.footerLogo?.asset?.url}
             quickLinksHeading={data.appearances?.footer?.quickLinksHeading}
             quickLinksTwoHeading={data.appearances?.footer?.quickLinksTwoHeading}
-            altText={data.appearances?.footer?.footerLogo?.asset?.altText}
+            altText={data.profileSettings?.company_name}
             blurData={data.appearances?.footer?.footerLogo?.asset?.lqip}
             email={data.profileSettings?.contact_information?.email}
             phone_number={data.profileSettings?.contact_information?.phone_number}
