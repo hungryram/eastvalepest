@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 // import Hero from "./hero";
 // import CallToActionBanner from "./cta-banner";
 // import CalltoActionFullWidth from "./cta-fullwidthimage";
