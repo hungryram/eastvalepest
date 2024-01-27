@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Styles from "./hero.module.css"
 import HeaderSection from "./header-section";
+import Skeleton from "react-loading-skeleton";
 
 interface Props {
     content: string[];
@@ -56,12 +57,11 @@ export default function Hero({
                 />
             }
             <div className="absolute inset-0" style={imageOverlay}></div>
-            {(content || primaryButtonLink || secondaryButtonLink) && (
+            {(content || primaryButtonLink || secondaryButtonLink ) && (
                 <div className={`container ${Styles.heroInnerContainer}`}>
                     <div style={{
                         color: textColor
                     }}>
-
                         <HeaderSection
                             content={content}
                             textAlign={textAlign}

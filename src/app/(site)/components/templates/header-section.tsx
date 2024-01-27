@@ -1,5 +1,6 @@
 import Link from "next/link"
 import ContentEditor from "../util/content-editor"
+import Skeleton from "react-loading-skeleton"
 
 export default function HeaderSection({
   content,
@@ -41,8 +42,9 @@ export default function HeaderSection({
         ${textAlign === 'right' && 'text-right justify-end'}
         `}>
           <ContentEditor content={content} />
+
           <div className={`mt-10 flex items-center gap-x-6 ${textAlign === 'left' && 'text-left max-w-4xl'} ${textAlign === 'center' && 'mx-auto text-center justify-center max-w-4xl'} ${textAlign === 'right' && 'text-right justify-end'}`}>
-          {primaryButtonLinking && (
+            {primaryButtonLinking && (
               <>
                 {buttonLink?.externalUrl ?
                   <a href={primaryButtonLinking} className="primary-button" style={primaryButtonStyle}>{primaryButtonText}</a>
