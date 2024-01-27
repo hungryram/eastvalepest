@@ -1,8 +1,11 @@
 import { client } from '../../../sanity/lib/client';
-import Main from './components/templates/main';
+// import Main from './components/templates/main';
 import { homePageData } from '../../../lib/groq-data';
+import dynamic from 'next/dynamic';
 
 // export const revalidate = 0;
+
+const Main = dynamic(() => import('./components/templates/main'))
 
 export default async function Home() {
   const data = await client.fetch(homePageData)

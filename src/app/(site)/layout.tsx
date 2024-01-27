@@ -1,6 +1,6 @@
 import { client } from '../../../sanity/lib/client'
-import Footer from './components/global/footer'
-import Navbar from './components/global/navbar'
+// import Footer from './components/global/footer'
+// import Navbar from './components/global/navbar'
 import './globals.css'
 import { appearance, mainLayoutProfile } from '../../../lib/groq-data'
 import { Metadata } from 'next';
@@ -8,7 +8,8 @@ import GoogleAnalytics from './components/global/analytics'
 import { bodyFont } from '../fonts'
 import Pixel from './components/global/pixel'
 import NavbarWide from './components/global/navbar-wide'
-export const revalidate = 0;
+import dynamic from 'next/dynamic'
+// export const revalidate = 0;
 
 // GENERATES SEO
 export async function generateMetadata(): Promise<Metadata> {
@@ -49,6 +50,9 @@ export async function generateMetadata(): Promise<Metadata> {
     }
   }
 }
+
+const Navbar = dynamic(() => import('./components/global/navbar'), { ssr: false })
+const Footer = dynamic(() => import('./components/global/footer'), { ssr: false })
 
 export default async function RootLayout({
   children,

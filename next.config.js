@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+
+module.exports = withBundleAnalyzer(
+  {
     webpack: (config) => {
         let modularizeImports = null;
         config.module.rules.some((rule) =>
@@ -31,3 +37,4 @@ module.exports = {
         ignoreDuringBuilds: true,
     },
 }
+)

@@ -24,6 +24,7 @@ type Meta = {
     }
 }
 
+
 // GENERATES SEO
 export async function generateMetadata({ params }: Meta): Promise<Metadata> {
     const slug = params.slug
