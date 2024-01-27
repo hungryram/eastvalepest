@@ -87,12 +87,14 @@ export default function Navbar({
           <div className={Styles.desktopLogoContainer}>
             <Link href="/">
               {logo ?
-                <Image
-                  src={logo}
-                  width={logoScroll}
-                  height={10}
-                  alt={company_name}
-                />
+                <div className="relative">
+                  <Image
+                    src={logo}
+                    width={logoScroll}
+                    height={100}
+                    alt={company_name}
+                  />
+                </div>
                 :
                 <h1 className="text-3xl">{company_name}</h1>
               }
@@ -199,7 +201,7 @@ export default function Navbar({
           {!hideCta && ctaLinking &&
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
               <Link href={ctaLinking ?? '/'} className="primary-button text-sm flex items-center">
-                {ctaLink?.text} <FaCaretRight className="text-xl"/>
+                {ctaLink?.text} <FaCaretRight className="text-xl" />
               </Link>
             </div>
           }

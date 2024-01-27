@@ -1,19 +1,19 @@
 import dynamic from "next/dynamic";
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
-// import Hero from "./hero";
-// import CallToActionBanner from "./cta-banner";
-// import CalltoActionFullWidth from "./cta-fullwidthimage";
-// import CalltoActionLeftText from "./cta-lefttext";
-// import CalltoActionTextImage from "./cta-textimage";
-// import FeatureSection from "./feature-section";
-// import LogoCloudSection from "./logo-cloud-section";
+import Hero from "./hero";
+import CallToActionBanner from "./cta-banner";
+import CalltoActionFullWidth from "./cta-fullwidthimage";
+import CalltoActionLeftText from "./cta-lefttext";
+import CalltoActionTextImage from "./cta-textimage";
+import FeatureSection from "./feature-section";
+import LogoCloudSection from "./logo-cloud-section";
 import PricingSection from "./pricing-section";
 import TestimonialSection from "./testimonials-section";
-// import ContactPage from "./contact-page";
+import ContactPage from "./contact-page";
 import ContentSimple from "./content-simple";
 import ServiceGrid from "./services-grid";
 import TeamComponent from "./team-section";
-// import BlogSection from "./blog-section";
+import BlogSection from "./blog-section";
 import DisclosureSection from "./disclosure-section";
 import DisclosureGrid from "./disclosure-grid";
 import LeadForm from "./lead-form";
@@ -22,14 +22,14 @@ import GalleryMasonry from "./gallery-masonry";
 import GallerySwiper from "./gallery-swiper";
 import HeroSwiper from "./hero-swiper";
 import TestimonialSwiper from "./testimonial-swiper";
-// import FeaturedGridImageTextOutside from "./featured-grid-image";
-// import FeaturedGridImageTextInside from "./featured-grid-text-inside";
-// import FeaturedGridBox from "./feature-grid-box";
-// import HeroSidebySide from "./hero-sidebyside";
-// import HeroBasic from "./hero-basic";
+import FeaturedGridImageTextOutside from "./featured-grid-image";
+import FeaturedGridImageTextInside from "./featured-grid-text-inside";
+import FeaturedGridBox from "./feature-grid-box";
+import HeroSidebySide from "./hero-sidebyside";
+import HeroBasic from "./hero-basic";
 import DisclosureSeparate from "./disclosure-separate";
 import TestimonialsColumn from "./testimonials-column";
-// import LeadFormTwoColumn from "./leadform-two-column";
+import LeadFormTwoColumn from "./leadform-two-column";
 
 interface Props {
     pageBuilder: any[];
@@ -58,30 +58,30 @@ interface Props {
     zillow: any;
 }
 
-// HERO
-const HeroStatic = dynamic(() => import('./hero'), { ssr: false })
-const HeroSidebySide = dynamic(() => import('./hero'), { ssr: false })
-const HeroBasic = dynamic(() => import('./hero-basic'), { ssr: false })
+// // HERO
+// const HeroStatic = dynamic(() => import('./hero'), { ssr: false })
+// const HeroSidebySide = dynamic(() => import('./hero'), { ssr: false })
+// const HeroBasic = dynamic(() => import('./hero-basic'), { ssr: false })
 
-// CTA
-const CallToActionBanner = dynamic(() => import('./cta-banner'), { ssr: false })
-const CalltoActionFullWidth = dynamic(() => import('./cta-fullwidthimage'), { ssr: false })
-const CalltoActionLeftText = dynamic(() => import('./cta-lefttext'), { ssr: false })
-const CalltoActionTextImage = dynamic(() => import('./cta-textimage'), { ssr: false })
+// // CTA
+// const CallToActionBanner = dynamic(() => import('./cta-banner'), { ssr: false })
+// const CalltoActionFullWidth = dynamic(() => import('./cta-fullwidthimage'), { ssr: false })
+// const CalltoActionLeftText = dynamic(() => import('./cta-lefttext'), { ssr: false })
+// const CalltoActionTextImage = dynamic(() => import('./cta-textimage'), { ssr: false })
 
-// FEATURED
-const FeatureSection = dynamic(() => import('./feature-section'), { ssr: false })
-const FeaturedGridImageTextOutside = dynamic(() => import('./featured-grid-image'), { ssr: false })
-const FeaturedGridImageTextInside = dynamic(() => import('./featured-grid-text-inside'), { ssr: false })
-const FeaturedGridBox = dynamic(() => import('./feature-grid-box'), { ssr: false })
+// // FEATURED
+// const FeatureSection = dynamic(() => import('./feature-section'), { ssr: false })
+// const FeaturedGridImageTextOutside = dynamic(() => import('./featured-grid-image'), { ssr: false })
+// const FeaturedGridImageTextInside = dynamic(() => import('./featured-grid-text-inside'), { ssr: false })
+// const FeaturedGridBox = dynamic(() => import('./feature-grid-box'), { ssr: false })
 
-const LogoCloudSection = dynamic(() => import('./logo-cloud-section'), { ssr: false })
+// const LogoCloudSection = dynamic(() => import('./logo-cloud-section'), { ssr: false })
 
-const LeadFormTwoColumn = dynamic(() => import('./leadform-two-column'), { ssr: false })
+// const LeadFormTwoColumn = dynamic(() => import('./leadform-two-column'), { ssr: false })
 
-const BlogSection = dynamic(() => import('./blog-section'), { ssr: false })
+// const BlogSection = dynamic(() => import('./blog-section'), { ssr: false })
 
-const ContactPage = dynamic(() => import('./contact-page'), { ssr: false })
+// const ContactPage = dynamic(() => import('./contact-page'), { ssr: false })
 
 
 
@@ -185,7 +185,7 @@ export default function Main({
                     return (
                         <>
                             {section?.layoutType === 'static' &&
-                                <HeroStatic
+                                <Hero
                                     key={section?._key}
                                     content={section?.content}
                                     image={section?.imageData?.asset?.url}
