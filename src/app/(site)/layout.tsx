@@ -8,8 +8,6 @@ import GoogleAnalytics from './components/global/analytics'
 import { bodyFont } from '../fonts'
 import Pixel from './components/global/pixel'
 import NavbarWide from './components/global/navbar-wide'
-import dynamic from 'next/dynamic'
-import Skeleton from 'react-loading-skeleton';
 // export const revalidate = 0;
 
 // GENERATES SEO
@@ -186,54 +184,54 @@ export default async function RootLayout({
               }
           `}
         </style>
-        {data?.appearances?.header?.menuLayout === 'simple' &&
-          <Navbar
-            {...navbarSchema}
+          {data?.appearances?.header?.menuLayout === 'simple' &&
+            <Navbar
+              {...navbarSchema}
+            />
+          }
+          {data?.appearances?.header?.menuLayout === 'wide' &&
+            <NavbarWide
+              {...navbarSchema}
+            />
+          }
+          <main id="mainBody">
+            {children}
+          </main>
+          <Footer
+            singleColumn={data?.appearances?.footer?.singleColumn}
+            footerText={data.appearances?.footer?.footerText}
+            company_name={data.profileSettings?.company_name}
+            image={data.appearances?.footer?.footerLogo?.asset?.url}
+            quickLinksHeading={data.appearances?.footer?.quickLinksHeading}
+            quickLinksTwoHeading={data.appearances?.footer?.quickLinksTwoHeading}
+            altText={data.appearances?.footer?.footerLogo?.asset?.altText}
+            blurData={data.appearances?.footer?.footerLogo?.asset?.lqip}
+            email={data.profileSettings?.contact_information?.email}
+            phone_number={data.profileSettings?.contact_information?.phone_number}
+            office_number={data.profileSettings?.contact_information?.office_number}
+            address={data.profileSettings?.address?.address}
+            city={data.profileSettings?.address?.city}
+            state={data.profileSettings?.address?.state}
+            zip_code={data.profileSettings?.address?.zip_code}
+            footerDisclaimer={data.appearances?.footer?.footerDisclaimer}
+            shortText={data.appearances?.footer?.shortText}
+            legal={data.legal}
+            links={data.appearances?.footer?.quickLinks}
+            secondLinks={data.appearances?.footer?.secondQuickLinks}
+            // SOCIAL
+            googleBusiness={data.profileSettings?.social?.googleBusiness}
+            facebook={data.profileSettings?.social?.facebook}
+            youtube={data.profileSettings?.social?.youtube}
+            instagram={data.profileSettings?.social?.instagram}
+            twitter={data.profileSettings?.social?.twitter}
+            reddit={data.profileSettings?.social?.reddit}
+            linkedin={data.profileSettings?.social?.linkedin}
+            yelp={data.profileSettings?.social?.yelp}
+            pinterest={data.profileSettings?.social?.pinterest}
+            tiktok={data.profileSettings?.social?.tiktok}
+            zillow={data.profileSettings?.social?.zillow}
+            size={data.profileSettings?.social?.size}
           />
-        }
-        {data?.appearances?.header?.menuLayout === 'wide' &&
-          <NavbarWide
-            {...navbarSchema}
-          />
-        }
-        <main id="mainBody">
-          {children}
-        </main>
-        <Footer
-          singleColumn={data?.appearances?.footer?.singleColumn}
-          footerText={data.appearances?.footer?.footerText}
-          company_name={data.profileSettings?.company_name}
-          image={data.appearances?.footer?.footerLogo?.asset?.url}
-          quickLinksHeading={data.appearances?.footer?.quickLinksHeading}
-          quickLinksTwoHeading={data.appearances?.footer?.quickLinksTwoHeading}
-          altText={data.appearances?.footer?.footerLogo?.asset?.altText}
-          blurData={data.appearances?.footer?.footerLogo?.asset?.lqip}
-          email={data.profileSettings?.contact_information?.email}
-          phone_number={data.profileSettings?.contact_information?.phone_number}
-          office_number={data.profileSettings?.contact_information?.office_number}
-          address={data.profileSettings?.address?.address}
-          city={data.profileSettings?.address?.city}
-          state={data.profileSettings?.address?.state}
-          zip_code={data.profileSettings?.address?.zip_code}
-          footerDisclaimer={data.appearances?.footer?.footerDisclaimer}
-          shortText={data.appearances?.footer?.shortText}
-          legal={data.legal}
-          links={data.appearances?.footer?.quickLinks}
-          secondLinks={data.appearances?.footer?.secondQuickLinks}
-          // SOCIAL
-          googleBusiness={data.profileSettings?.social?.googleBusiness}
-          facebook={data.profileSettings?.social?.facebook}
-          youtube={data.profileSettings?.social?.youtube}
-          instagram={data.profileSettings?.social?.instagram}
-          twitter={data.profileSettings?.social?.twitter}
-          reddit={data.profileSettings?.social?.reddit}
-          linkedin={data.profileSettings?.social?.linkedin}
-          yelp={data.profileSettings?.social?.yelp}
-          pinterest={data.profileSettings?.social?.pinterest}
-          tiktok={data.profileSettings?.social?.tiktok}
-          zillow={data.profileSettings?.social?.zillow}
-          size={data.profileSettings?.social?.size}
-        />
       </body>
     </html>
   )
