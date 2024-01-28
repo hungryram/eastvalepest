@@ -4,7 +4,7 @@ import { getPage } from "../../../../lib/groq-data";
 import Main from "../components/templates/main";
 import { Metadata } from 'next';
 import { client } from "../../../../sanity/lib/client";
-// export const revalidate = 0;
+export const revalidate = 0;
 
 
 type Props = {
