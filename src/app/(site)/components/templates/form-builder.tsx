@@ -1,7 +1,9 @@
+'use client'
 import React from 'react';
 import { submitForm } from './_formActions'
 import Styles from "./form-builder.module.css"
 import ContentEditor from '../util/content-editor';
+import { usePathname } from 'next/navigation';
 
 interface FormField {
   name: string;
@@ -27,7 +29,9 @@ interface FormSchema {
   buttonLabel: string;
   buttonBackgroundColor: any;
   buttonTextColor: any;
-  formDisclaimer: any
+  formDisclaimer: any;
+  spreadsheetId?: string;
+  sheetName?: string;
 }
 
 interface FormBuilderProps {
@@ -35,9 +39,13 @@ interface FormBuilderProps {
 }
 
 export default function FormBuilder({ formSchema }: FormBuilderProps) {
+
+  const path = usePathname()
+
+
   return (
     <div className="py-2">
-      <form action={submitForm}>
+      <form action={(data) => submitForm(data, formSchema?.spreadsheetId, formSchema?.sheetName)}>
         <label className="hidden" htmlFor="name-honey" />
         <input className="hidden" type="text" name="name-honey" />
         <input className="hidden" type="hidden" name="bcc" value={formSchema?.emailBcc} />
@@ -46,6 +54,8 @@ export default function FormBuilder({ formSchema }: FormBuilderProps) {
         <input className="hidden" type="hidden" name="sendTo" value={formSchema?.sendTo} />
         <input className="hidden" type="hidden" name="subject" value={formSchema?.subject} />
         <input className="hidden" type="hidden" name="redirectTo" value={formSchema?.redirectTo} />
+        <input type="hidden" name="path" value={path} />
+
         {formSchema?.fields && (
           <>
             {formSchema.fields.map((field, i) => {

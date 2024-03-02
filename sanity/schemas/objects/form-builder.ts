@@ -36,6 +36,17 @@ export default defineType({
             description: 'What email you want to send from. Must be verified.',
         },
         {
+            title: 'Google Spreadsheet ID',
+            name: 'spreadsheetId',
+            type: 'string',
+        },
+        {
+            title: 'Google Sheet Name',
+            name: 'sheetName',
+            type: 'string',
+            description: 'Allows form submissions to flow through Google Sheet'
+        },
+        {
             title: 'Redirect To',
             name: 'redirectTo',
             type: 'string',

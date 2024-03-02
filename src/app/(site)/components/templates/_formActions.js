@@ -1,8 +1,9 @@
 'use server'
 import { ServerClient } from 'postmark'
 import { redirect } from 'next/navigation';
+import {sentToSheet} from '../../../../../lib/sheetsapi'
 
-export const submitForm = async (data) => {
+export const submitForm = async (data, spreadsheetId, sheetName) => {
 
     let formData = {}
     let email = '';
@@ -21,18 +22,24 @@ export const submitForm = async (data) => {
         ) {
             if (name === 'Email') {
                 email = value;
+            }
+
+            if (formData[name]) {
+                formData[name] = Array.isArray(formData[name])
+                    ? [...formData[name], value]
+                    : [formData[name], value];
             } else {
-                if (formData[name]) {
-                    formData[name] = Array.isArray(formData[name])
-                        ? [...formData[name], value]
-                        : [formData[name], value];
-                } else {
-                    formData[name] = value;
-                }
+                formData[name] = value;
             }
         }
     });
 
+    // For Google Sheets
+    if(sheetName && spreadsheetId) {
+        await sentToSheet(formData, spreadsheetId, sheetName)
+    }
+
+    // For Postmark
     const tableRows = Object.entries(formData).map(([key, value]) => {
         if (Array.isArray(value)) {
             return `
@@ -56,10 +63,6 @@ export const submitForm = async (data) => {
     <table>
       <tbody>
         ${tableRows.join('')}
-        <tr>
-            <td><strong>Email</strong></td>
-            <td>${email}</td>
-        </tr>
       </tbody>
     </table>
   `;
